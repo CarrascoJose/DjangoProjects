@@ -1,0 +1,6 @@
+<form method="post">
+    {% csrf_token %}
+    <h1>Desea eliminar a la persona {{ object }}?</h1>
+    <button type="submit" name="button"></button>
+    <a href="{% url 'index2' %}">Cancelar</a>
+</form>   
