@@ -11,19 +11,15 @@
 </head>
 <body>
     <h1>Lista de Notas Escritas por Usuarios!</h1>
-    <table>
-        <tr>
-            <th>Título</th>
-            <th>Fecha de publicación</th>
-            <th>Autor</th>
-        </tr>
-        {% for note in object_list%}
-                    <tr>
-                        <td>{{note.title}}</td>
-                        <td>{{note.publish_date}}</td>
-                        <td>{{note.user}}</td>
-                    </tr>
-        {% endfor %}
-    </table>
+    {% for note in object_list%}
+        <div class = "homeDiv">
+            <section>
+                <h1>{{note.title}}</h1>
+                <h3>Usuario: {{note.user}}</h3>
+                <p>{{note.publish_date}}</p>
+            </section>
+        </div>
+        <div class="sample"></div>
+    {% endfor %}
 </body>
 </html>
