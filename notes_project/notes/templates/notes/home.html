@@ -1,25 +1,37 @@
+{% extends 'notes/master/master.html'%}
 {% load static %}
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="{% static '/styles/home.css' %}" rel="stylesheet">
-    <title>Home Page View</title>
-</head>
+{% block addcss %}
+<link href="{% static '/styles/home.css' %}" rel="stylesheet">
+{% endblock %}
+{% block body%}
 <body>
     <h1>Lista de Notas Escritas por Usuarios!</h1>
-    {% for note in object_list%}
-        <div class = "homeDiv">
-            <section>
-                <h1>{{note.title}}</h1>
-                <h3>Usuario: {{note.user}}</h3>
-                <p>{{note.publish_date}}</p>
-            </section>
-        </div>
-        <div class="sample"></div>
-    {% endfor %}
+    <section>
+        <ol>
+        {% for note in object_list%}
+            <li class="note-item">
+                <article>
+                    <div class="note-summary">
+                        <div class="note-image">
+                        <img src="{{ note.image.url }}" alt="{{title}}">
+                        </div>
+                        <div class = "note-details">
+                        <h3>{{ note.title }}</h3>
+                        <h4>Hecho por: {{note.user}}</h4>
+                        <address> {{note.publish_date}} </address>
+                        
+                        </div>
+                    </div>
+                    <div class="note-actions">
+                        <a href="{% url 'note' note.id %}" class = "btn"> More Details</a>
+            
+                    </div>
+                </article>
+            </li>
+        {% endfor %}
+        </ol>
+        <h3><a href="{% url 'add_note' %}">Create a Note!</a></h3>
+    </section>
 </body>
-</html>
+{% endblock %}

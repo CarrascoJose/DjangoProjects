@@ -1,0 +1,21 @@
+{% extends 'notes/master/master.html'%}
+{% load static %}
+
+{% block addcss %}
+<link href="{% static '/styles/home.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block body%}
+<body>
+    <div class="homeDiv">
+        <h1>{{note.title}}</h1>
+        <h2>Autor: {{note.user}}</h2>
+        <h3>{{note.publish_date}}</h3>
+        <p>{{note.resume}}</p>
+        <p>{{note.body}}</p>
+    </div>
+    
+</body>
+{% endblock %}
+
+
