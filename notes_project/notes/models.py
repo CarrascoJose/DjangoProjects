@@ -9,3 +9,19 @@ class AppUser(models.Model):
 
     def __str__(self):
         return self.username
+
+    class Meta:
+        db_table = 'User'
+    
+
+class Note(models.Model):
+    title = models.CharField(max_length=200)
+    resume = models.TextField(max_length=200)
+    body = models.TextField(max_length=400)
+    publish_date = models.DateTimeField()
+    image = models.ImageField()
+    user = models.ForeignKey(AppUser,null=True,blank=True,on_delete=models.CASCADE)
+
+
+    def __str__(self):
+        return self.title

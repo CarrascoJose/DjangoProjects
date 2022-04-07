@@ -1,18 +1,29 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="{% static '/styles/home.css' %}" rel="stylesheet">
     <title>Home Page View</title>
 </head>
 <body>
-    <h1>Template de listado</h1>
-    {% for user in object_list%}
-                <tr>
-                    <td>{{user.username}}</td>
-                    <td>{{user.email}}</td>
-                </tr>
-    {% endfor %}
+    <h1>Lista de Notas Escritas por Usuarios!</h1>
+    <table>
+        <tr>
+            <th>Título</th>
+            <th>Fecha de publicación</th>
+            <th>Autor</th>
+        </tr>
+        {% for note in object_list%}
+                    <tr>
+                        <td>{{note.title}}</td>
+                        <td>{{note.publish_date}}</td>
+                        <td>{{note.user}}</td>
+                    </tr>
+        {% endfor %}
+    </table>
 </body>
 </html>
