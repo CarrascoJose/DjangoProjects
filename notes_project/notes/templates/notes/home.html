@@ -27,6 +27,9 @@
                         <a href="{% url 'note' note.id %}" class = "btn"> More Details</a>
             
                     </div>
+                    <div class="note-actions">
+                        <a href="{% url 'delete_note' note.id%}" class = "btn">Delete Note</a>
+                    </div>
                 </article>
             </li>
         {% endfor %}

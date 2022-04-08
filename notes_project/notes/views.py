@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.views.generic import TemplateView, CreateView,ListView
+from django.views.generic import TemplateView, CreateView,ListView, DeleteView
 from .models import AppUser,Note
 from django.urls import reverse_lazy
 from .forms import NoteForm
@@ -10,8 +10,7 @@ class HomePageView(ListView):
     model = Note
     template_name = 'notes/home.html'
 
-    def get_queryset(self):
-        return self.model.objects.all()
+
 
 
 class NoteView(TemplateView):
@@ -30,5 +29,12 @@ class AddNoteView(CreateView):
     template_name = 'notes/add_note.html'
     form_class = NoteForm
     success_url = reverse_lazy('home')
+
+
+class DeleteNoteView(DeleteView):
+    model = Note
+    template_name = 'notes/delete_note.html'
+    success_url = reverse_lazy('home')
+
 
         
